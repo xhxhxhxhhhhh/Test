@@ -1,6 +1,20 @@
 #include <iostream>
 
 using namespace std;
+class   Wheel
+{public:
+        string brand;
+        int year;
+
+        void wheelprintinfo();
+
+
+};
+void Wheel::wheelprintinfo()
+{
+    cout<<"我的轮胎品牌是"<<brand<<endl;
+    cout<<"我的轮胎日期是"<<year<<endl;
+};
 class   Car{//汽车类
   public:
     //成员属性
@@ -9,6 +23,8 @@ class   Car{//汽车类
     string brand;//牌子
     string type;//种类
     int year;//年限
+    Wheel wl;
+    Wheel *pwl;
 
     //成员方法
     //其实也是成员数据，指针变量，指向函数的变量，并非真正的函数成员
@@ -42,19 +58,33 @@ int main()
     BWMthree.brand="宝马";
     BWMthree.type="3C";
     BWMthree.year=2023;
+    BWMthree.pwl=new Wheel();
+    BWMthree.pwl->brand="米其林";
+    BWMthree.pwl->year=2023;
+    BWMthree.wl.brand="米其林";
+    BWMthree.wl.year=2023;
     BWMthree.printCarInfo=BWMThreeprintCarInfo;
     BWMthree.printCarInfo(BWMthree.color, BWMthree.brand,BWMthree.type,BWMthree.year);
     BWMthree.realPrintCarInfo();
+    BWMthree.wl.wheelprintinfo();
+    BWMthree.pwl->wheelprintinfo();
 
     class Car *AodiA6 = new Car();//给指针变量开辟空间
     AodiA6->color="黑色";
     AodiA6->brand="奥迪";
     AodiA6->type="A6";
     AodiA6->year=2008;
+    AodiA6->pwl=new Wheel;
+    AodiA6->pwl->brand="马牌";
+    AodiA6->pwl->year=2012;
+    AodiA6->wl.brand="马牌";
+    AodiA6->wl.year=2012;
 
     AodiA6->printCarInfo=AodiA6printCarInfo;
     AodiA6->printCarInfo(AodiA6->color,AodiA6->brand,AodiA6->type,AodiA6->year);
     AodiA6->realPrintCarInfo();
+    AodiA6->wl.wheelprintinfo();
+    AodiA6->pwl->wheelprintinfo();
 
 
     return 0;
